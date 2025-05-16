@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	updateCartCountDisplay();
+
 });
 
 // === Animation when item scrolls into view ===
@@ -93,24 +94,6 @@ document.getElementById("scrollToTopBtn").addEventListener("click", function () 
     behavior: "smooth"
   });
 });
-  // Áp dụng hiệu ứng fade-in khi vào trang
-  document.body.classList.add('fade-out');
-  window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.remove('fade-out');
-  });
 
-  // Áp dụng hiệu ứng fade-out khi click link
-  document.querySelectorAll('a[href]').forEach(function (link) {
-    // Loại bỏ các liên kết mở tab mới
-    if (link.target === "_blank" || link.href.startsWith("javascript:")) return;
 
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const href = link.href;
-      document.body.classList.add('fade-out');
 
-      setTimeout(() => {
-        window.location.href = href;
-      }, 300); // thời gian chờ trùng với transition CSS
-    });
-  });
