@@ -1,8 +1,13 @@
-ul, nav, body, h1, h2, h4, h6, p, figure {
+body, h1, h2, h4, h6, p, figure {
   margin: 0;
   padding: 0;
 }
 
+ul, nav {
+  margin: 0;
+  padding-left: 0; /* chỉ reset padding-left cho ul/nav nếu bạn dùng list-style:none */
+  list-style: none; /* nếu muốn loại bỏ bullet */
+}
 
 a, button { transition: all 0.3s ease; }
 
@@ -218,12 +223,18 @@ body {
   font-size: 17px;
   background-color: #ccc;
   overflow-x: hidden;
+    opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 body.fade-out {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
+body.fade-out:has(.tm-paging-link:focus) {
+  opacity: 1;
+  transition: none;
+}
 .container {
   background-color: white;
 }
@@ -384,12 +395,13 @@ p, address {
 
 
 .tm-gallery-page {
+  max-width: 1120px; /* Tăng rộng hơn để không bị co cụm */
+  margin: 0 auto 80px auto; /* Căn giữa và cách dưới 80px */
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;       /* Căn giữa các item */
-  gap: 30px;                     /* Khoảng cách giữa các item */
-  margin: 0 auto 80px auto;      /* Căn giữa toàn bộ gallery và cách dưới */
-  padding: 0 15px;               /* Padding hai bên để không bị sát mép */
+  justify-content: center; /* Căn giữa các item */
+  gap: 30px; /* Khoảng cách giữa các item */
+  padding: 0 15px; /* Padding 2 bên tránh sát mép */
 }
 
 
@@ -1479,4 +1491,20 @@ select, input {
   border-radius: 12px;
   font-weight: bold;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+#message-box {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2D99CC;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  opacity: 1;
+  transition: opacity 1s ease;
+  z-index: 9999;
 }
